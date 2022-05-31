@@ -77,7 +77,7 @@ export const Header = (props) => {
         <h1><span role="img" aria-label="emoji name">🔥V Chat🔥</span></h1>
         {roomId!=='global'&& <h9 className="room-name">Room : {roomId}</h9>}
         <div className='menu'>
-            <MeetingRoomOutlined className='room' onClick={handleClickOpen}/>
+        {auth.currentUser && <MeetingRoomOutlined className='room' onClick={handleClickOpen}/>}
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Create or enter in private room.</DialogTitle>
 

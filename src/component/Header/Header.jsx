@@ -22,6 +22,7 @@ export const Header = (props) => {
     const q = inputs.roomId && roomRef.where("roomId","==",inputs.roomId)
     const [rooms] = useCollectionData(q, {idField:'id'})
 
+    console.log(rooms)
     const onChange = (e)=>{
         setInputs((prev)=>{
           return {...prev,[e.target.name]:e.target.value}

@@ -3,9 +3,9 @@ import React from 'react';
 import firebase from "firebase/compat/app"
 import "firebase/compat/firestore"
 import "firebase/compat/auth"
-// import {useAuthState} from "react-firebase-hooks/auth"
+import {useAuthState} from "react-firebase-hooks/auth"
 import { Header } from './component/Header/Header';
-// import { useState } from 'react';
+import { useState } from 'react';
 
 
 firebase.initializeApp({
@@ -23,12 +23,12 @@ const firestore = firebase.firestore();
 
 function App() {
 
-  // const messageRef = firestore.collection('massages')
-  // const [user] =useAuthState(auth)
-  // const [roomId, setRoomId] = useState('')
-  // const pull_data = (data) =>{
-  //   setRoomId(data)
-  // }
+  const messageRef = firestore.collection('massages')
+  const [user] =useAuthState(auth)
+  const [roomId, setRoomId] = useState('')
+  const pull_data = (data) =>{
+    setRoomId(data)
+  }
 
   return (
     <div className="App">

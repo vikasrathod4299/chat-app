@@ -20,9 +20,8 @@ export const Header = (props) => {
     const [inputs, setInputs] = useState({})
     const roomRef = firestore.collection('rooms')
     const q = inputs.roomId && roomRef.where("roomId","==",inputs.roomId)
-    const [rooms] = useCollectionData(q, {idField:'id'})
+    // const [rooms] = useCollectionData(q, {idField:'id'})
 
-    console.log(rooms)
     const onChange = (e)=>{
         setInputs((prev)=>{
           return {...prev,[e.target.name]:e.target.value}
@@ -42,34 +41,34 @@ export const Header = (props) => {
     setOpen(false);
     };
     
-    const handleCreate = async(e) => {
-        e.preventDefault()
+    // const handleCreate = async(e) => {
+    //     e.preventDefault()
         
-        if (rooms.length>=1){
-          setError("Room Alreadey Exist...")
-        }
-        else{
-            await roomRef.add({
-            roomId:inputs.roomId,
-            password:inputs.password
-          })
-          setError("Room is created...")
-        }
-      };
+    //     if (rooms.length>=1){
+    //       setError("Room Alreadey Exist...")
+    //     }
+    //     else{
+    //         await roomRef.add({
+    //         roomId:inputs.roomId,
+    //         password:inputs.password
+    //       })
+    //       setError("Room is created...")
+    //     }
+    //   };
 
-    const handleEnter = (e) => {
-    if (rooms.length<=0){
-        setError("Room doesn't Exist...")
-    }
-    else{
-        if (rooms[0].password == inputs.password){
-            setRoomId(inputs.roomId)
-            setOpen(false);
-        }else{
-            setPassErr("Incorrect password...")
-        }
-    }
-    };
+    // const handleEnter = (e) => {
+    // if (rooms.length<=0){
+    //     setError("Room doesn't Exist...")
+    // }
+    // else{
+    //     if (rooms[0].password == inputs.password){
+    //         setRoomId(inputs.roomId)
+    //         setOpen(false);
+    //     }else{
+    //         setPassErr("Incorrect password...")
+    //     }
+    // }
+    // };
 
     return (
         <header className="App-header">
@@ -107,8 +106,8 @@ export const Header = (props) => {
 
                 <DialogActions>
                     <Button type="submit" onClick={handleExitRoom}>Public</Button>
-                    <Button type="submit" onClick={handleCreate}>Create</Button>
-                    <Button type="submit" onClick={handleEnter}>Enter</Button>
+                    {/* <Button type="submit" onClick={handleCreate}>Create</Button> */}
+                    {/* <Button type="submit" onClick={handleEnter}>Enter</Button> */}
                 </DialogActions>
             </Dialog>
             { auth.currentUser && <ExitToAppOutlined onClick={()=>auth.signOut()}/>}

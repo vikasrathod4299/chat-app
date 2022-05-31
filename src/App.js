@@ -33,9 +33,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-
+      
       </header>
-      <Header auth={auth} firestore={firestore}/>
+      <Header func={pull_data} auth={auth} firestore={firestore}/>
     </div>
   );
 }

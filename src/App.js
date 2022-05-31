@@ -6,6 +6,8 @@ import "firebase/compat/auth"
 import {useAuthState} from "react-firebase-hooks/auth"
 import { Header } from './component/Header/Header';
 import { useState } from 'react';
+import { ChatRoom } from './component/Chatroom/ChatRoom';
+import { SignIn } from './component/SignIn/SignIn';
 
 
 firebase.initializeApp({
@@ -30,12 +32,13 @@ function App() {
     setRoomId(data)
   }
 
+
   return (
     <div className="App">
-      <header className="App-header">
-      
-      </header>
+
       <Header func={pull_data} auth={auth} firestore={firestore}/>
+
+      {user ? <ChatRoom roomId={roomId} auth = {auth} firebase={firebase} messageRef={messageRef}/> : <SignIn auth = {auth} firebase = {firebase} />}
     </div>
   );
 }
